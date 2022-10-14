@@ -1,14 +1,14 @@
 export default function Navbar() {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-gray-500">
             <div className="flex-1">
-                <img className="h-14 w-24 rounded-md" src="/public/Your paragraph text.gif" alt="logo" />
+                <img className="h-14 w-24 rounded-md" src="Your paragraph text.gif" alt="logo" />
             </div>
             <div className="hidden md:flex flex-col md:flex-row md:mx-6">
-                <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-900 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Home</a>
-                <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-900 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Shop</a>
-                <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-900 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Contact</a>
-                <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-900 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">About</a>
+                <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-900 md:mx-4 md:my-0" href="#">Home</a>
+                <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-900 md:mx-4 md:my-0" href="#">Shop</a>
+                <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-900 md:mx-4 md:my-0" href="#">Contact</a>
+                <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-900 md:mx-4 md:my-0" href="#">About</a>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
@@ -18,15 +18,15 @@ export default function Navbar() {
                             <span className="badge badge-sm indicator-item">0</span>
                         </div>
                     </label>
-                    <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
+                    {/* <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                         <div className="card-body">
-                            <span className="font-bold text-lg">8 Items</span>
-                            <span className="text-info">Subtotal: $999</span>
+                            <span className="font-bold text-lg">{} Items</span>
+                            <span className="text-info">Subtotal: $ {}</span>
                             <div className="card-actions">
                                 <button className="btn btn-primary btn-block">View cart</button>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -42,6 +42,5 @@ export default function Navbar() {
                 </div>
             </div>
         </div>
-
     )
 }
