@@ -2,9 +2,9 @@ import './App.css'
 import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Card from './components/Card/Card'
+import Cart from './components/Cart/Cart'
 // import Hero from './components/Hero/Hero'
 // import Footer from './components/Footer/Footer'
-import Cart from './components/Cart/Cart'
 
 export default function App() {
 
@@ -13,7 +13,7 @@ export default function App() {
   const [cartProducts, setCartProducts] = useState([]);
 
   const fetchData = async () => {
-    const res = await fetch('https://fakestoreapi.com/products')
+    const res = await fetch("https://fakestoreapi.com/products")
     const data = await res.json()
     setProducts(data)
   }
@@ -28,30 +28,31 @@ export default function App() {
   };
 
   const handleAddToCart = (id) => {
-    const addedItem = products.filter((product) => product.id === id);
+    console.log(id);
+    console.log(id.id);
+    const addedItem = products.filter((product) => product.id === id.id);
     setCartProducts([...cartProducts, ...addedItem]);
+    // console.log(addedItem)
   }
-
-
-  const allProducts = products.map((product) => {
-    return (
-      <Card
-        key={product.id}
-        title={product.title}
-        image={product.image}
-        price={product.price}
-        addToCart={handleAddToCart}
-      />
-    )
-  })
 
   return (
     <div className='scroll-smooth'>
-      <Navbar handleCartClick={handleCartClick} />
+      <Navbar handleCartClick={handleCartClick} count={cartProducts.length} />
       <div className="container w-full flex flex-row justify-center items-center flex-wrap">
-        {allProducts}
+        {!cartVisible && products.map((product, ind) => {
+          return (
+            <Card
+              key={ind}
+              title={product.title}
+              image={product.image}
+              price={product.price}
+              id={product.id}
+              addToCart={handleAddToCart}
+            />
+          )
+        })}
       </div>
-      {cartVisible && <Cart />}
+      {cartVisible && <Cart cartProducts={cartProducts} />}
       {/* <Hero /> */}
       {/* <Footer /> */}
     </div>
