@@ -3,7 +3,7 @@ export default function Footer() {
         <div>
             <footer className="footer items-center p-4 bg-neutral text-neutral-content">
                 <div className="items-center grid-flow-col">            
-                    <img className="h-14 w-24 rounded-md" src="/public/Your paragraph text.gif" alt="logo" />       
+                    <img className="h-14 w-24 rounded-md" src="/images/Your paragraph text.gif" alt="logo" />       
                     <p>Copyright © 2022 - All right reserved</p>
                 </div>
                 <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">

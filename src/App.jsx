@@ -28,15 +28,15 @@ export default function App() {
   };
 
   const handleAddToCart = (id) => {
-    console.log(id);
-    console.log(id.id);
+    // console.log(id);
+    // console.log(id.id);
     const addedItem = products.filter((product) => product.id === id.id);
     setCartProducts([...cartProducts, ...addedItem]);
     // console.log(addedItem)
   }
 
   return (
-    <div className='scroll-smooth'>
+    <div className='scroll-smooth font-mukta'>
       <Navbar handleCartClick={handleCartClick} count={cartProducts.length} />
       <div className="container w-full flex flex-row justify-center items-center flex-wrap">
         {!cartVisible && products.map((product, ind) => {
@@ -46,15 +46,22 @@ export default function App() {
               title={product.title}
               image={product.image}
               price={product.price}
+              description={product.description}
+              category={product.category}
               id={product.id}
               addToCart={handleAddToCart}
             />
           )
         })}
       </div>
-      {cartVisible && <Cart cartProducts={cartProducts} />}
+      {cartVisible && <Cart
+        cartProducts={cartProducts}
+        setCartProducts={setCartProducts}
+      // onAdd={onAdd}
+      />}
       {/* <Hero /> */}
       {/* <Footer /> */}
+
     </div>
   )
 }

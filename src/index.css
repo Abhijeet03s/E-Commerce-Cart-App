@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 @layer base {
   body::-webkit-scrollbar {
@@ -15,4 +23,7 @@
     border-radius: 8px;
     background: #f8c9c9;
   }
+}
+.box-shadows {
+  box-shadow: 4px 4px 20px 0px #0000003d;
 }
