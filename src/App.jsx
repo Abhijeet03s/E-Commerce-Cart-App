@@ -12,6 +12,7 @@ export default function App() {
   const [cartVisible, setCartVisible] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
 
+
   const fetchData = async () => {
     const res = await fetch("https://fakestoreapi.com/products")
     const data = await res.json()
@@ -31,13 +32,16 @@ export default function App() {
     // console.log(id);
     // console.log(id.id);
     const addedItem = products.filter((product) => product.id === id.id);
+    // setCartProducts([...cartProducts, { ...addedItem, qty: addedItem.qty + 1 }]);
     setCartProducts([...cartProducts, ...addedItem]);
-    // console.log(addedItem)
+    console.log(addedItem)
   }
+
 
   return (
     <div className='scroll-smooth font-mukta'>
       <Navbar handleCartClick={handleCartClick} count={cartProducts.length} />
+      {/* <Hero /> */}
       <div className="container w-full flex flex-row justify-center items-center flex-wrap">
         {!cartVisible && products.map((product, ind) => {
           return (
@@ -57,9 +61,7 @@ export default function App() {
       {cartVisible && <Cart
         cartProducts={cartProducts}
         setCartProducts={setCartProducts}
-      // onAdd={onAdd}
       />}
-      {/* <Hero /> */}
       {/* <Footer /> */}
 
     </div>

@@ -1,46 +1,41 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 export default function Cart({ cartProducts, setCartProducts }) {
-    const [total, setTotal] = useState(0)
 
     const handleRemove = (id) => {
         const arr = cartProducts.filter((item) => item.id !== id);
         setCartProducts(arr);
-        handlePrice();
     };
 
-    const handlePrice = () => {
-        let totalAmount = 0;
-        cartProducts.map((item) => (totalAmount += item.price * item.total));
-        setTotal(totalAmount);
-    };
 
-    useEffect(() => {
-        handlePrice();
-    });
-
-    
     return (
         <div tabIndex={0} className="card card-compact dropdown-content w-full bg-base-100 rounded-none">
-            <div className="card-body container max-w-full min-h-screen">
+            <div className="card-body container max-w-full md:min-h-screen">
                 {cartProducts.length === 0 && (
                     <img className="absolute top-[20%] left-[35%]" height={1200} width={400} src="./images/empty-cart.png" alt="" />
                 )}
                 {cartProducts.map((item, ind) => {
                     return (
-                        <div key={ind} className="text-black flex justify-evenly items-center px-36 py-10 m-0">
-                            <img className="w-20" src={item.image} alt="product-image" />
-                            <h1 className="text-black">{item.title}</h1>
-                            <div className="flex justify-evenly items-center">
-                                <button className="p-2 m-2 rounded-lg bg-gray-200">+</button>
-                                <span>{item.qty}</span>
-                                <button className="p-2 m-2 rounded-lg bg-gray-200">-</button>
+                        <div key={ind} className="max-w-full text-black flex justify-evenly items-center px-36 py-10 m-0">
+                            <img className="w-32" src={item.image} alt="product-image" />
+                            <h1 className="md:w-36 md:text-center text-black">{item.title}</h1>
+                            <div className="md:w-20 md:flex md:justify-evenly md:items-center btn-group">
+                                <button className="btn border-0 bg-[#E21717]">-</button>
+                                {/* <button className="btn">1</button> */}
+                                <span className="p-3">1</span>
+                                <button className="btn border-0 bg-green-600 ">+</button>
                             </div>
-                            <h1>$ {item.price}</h1>
-                            <button onClick={() => handleRemove(item.id)}>Remove</button>
+                            <h1 className="md:w-20 md:text-[16px] text-center">$ {item.price}</h1>
+                            <button className="md:w-20 p-2 bg-[#E21717] text-[#f5f5f5f5] rounded-[5px]"
+                                onClick={() => handleRemove(item.id)}>Remove</button>
                         </div>
                     )
                 })}
+                <hr className="pt-4" />
+                <div className="flex justify-between items-center px-96 text-2xl text-black">
+                    <h1>Total:</h1>
+                    <h1>$100</h1>
+                </div>
             </div>
         </div>
     )
