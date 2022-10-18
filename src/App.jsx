@@ -28,13 +28,14 @@ export default function App() {
     setCartVisible(!cartVisible);
   };
 
-  const handleAddToCart = (id) => {
-    // console.log(id);
-    // console.log(id.id);
-    const addedItem = products.filter((product) => product.id === id.id);
-    // setCartProducts([...cartProducts, { ...addedItem, qty: addedItem.qty + 1 }]);
-    setCartProducts([...cartProducts, ...addedItem]);
-    console.log(addedItem)
+
+  const handleAddToCart = (repeatProd) => {
+    const prodExist = cartProducts.find((item) => item.id === repeatProd.id)
+    if (prodExist) {
+      setCartProducts(cartProducts.map((item) => item.id === repeatProd.id ? { ...prodExist, qty: prodExist.qty + 1 } : item))
+    } else {
+      setCartProducts([...cartProducts, { ...repeatProd, qty: 1 }])
+    }
   }
 
 

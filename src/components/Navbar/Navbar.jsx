@@ -1,7 +1,7 @@
 export default function Navbar({ handleCartClick, count }) {
 
     return (
-        <div className="navbar bg-black relative px-10 text-white">
+        <div className="navbar bg-black px-10 text-white sticky top-0">
             <div className="flex-1">
                 <a href=""><h1 className="text-2xl font-dancing">e-STORE</h1></a>
             </div>
