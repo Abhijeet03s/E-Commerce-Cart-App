@@ -38,6 +38,18 @@ export default function App() {
     }
   }
 
+  const handleRemoveToCart = (repeatProd) => {
+    const prodExist = cartProducts.find((item) => item.id === repeatProd.id)
+    if (prodExist.qty === 1) {
+      setCartProducts(cartProducts.filter((item) => item.id !== repeatProd.id))
+    } else {
+      setCartProducts(cartProducts.map((item) => item.id === repeatProd.id ? { ...prodExist, qty: prodExist.qty - 1 } : item))
+    }
+  }
+
+  const removeAllProducts = () => {
+    setCartProducts([])
+  }
 
   return (
     <div className='scroll-smooth font-mukta'>
@@ -62,6 +74,9 @@ export default function App() {
       {cartVisible && <Cart
         cartProducts={cartProducts}
         setCartProducts={setCartProducts}
+        handleRemoveToCart={handleRemoveToCart}
+        handleAddToCart={handleAddToCart}
+        removeAllProducts={removeAllProducts}
       />}
       {/* <Footer /> */}
 
