@@ -10,12 +10,11 @@ export default function Cart({ cartProducts, setCartProducts, handleRemoveToCart
     const deliveryCharge = itemPrice > 300 ? 0 : 20
     const totalPrice = itemPrice + tax + deliveryCharge
 
-
     return (
         <div tabIndex={0} className="card card-compact dropdown-content w-full bg-base-100 rounded-none">
-            {/* <div>
+            <div>
                 {cartProducts.length >= 1 && (<button className="p-2 absolute top-5 right-10 rounded-md bg-[#2e2e2e] text-white" onClick={removeAllProducts}>Clear Cart</button>)}
-            </div> */}
+            </div>
             <div className="card-body container max-w-full md:min-h-screen">
                 {cartProducts.length === 0 && (
                     <img className="absolute top-[20%] left-[35%]" height={1200} width={400} src="./images/empty-cart.png" alt="" />
@@ -43,7 +42,8 @@ export default function Cart({ cartProducts, setCartProducts, handleRemoveToCart
                         <div className="flex-1 px-96 text-xl">
                             <hr className="py-2" />
                             <div className="name">
-                                Subtotal:
+                                Subtotal<span className="font-extrabold mx-1">({cartProducts.length})</span>
+                                {`${cartProducts.length === 1 ? "item" : "items"}`}:
                                 <div class="price ">
                                     $ {itemPrice.toFixed(2)}
                                 </div>

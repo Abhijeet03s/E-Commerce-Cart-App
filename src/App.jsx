@@ -93,7 +93,6 @@ export default function App() {
           removeAllProducts={removeAllProducts}
         />}
       {/* <Footer /> */}
-
     </div>
   )
 }
