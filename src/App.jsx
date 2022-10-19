@@ -1,8 +1,9 @@
-import './App.css'
 import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Card from './components/Card/Card'
 import Cart from './components/Cart/Cart'
+import Filter from './components/Filter/Filter'
+// import ProductDetails from './components/ProductDetails/ProductDetails'
 // import Hero from './components/Hero/Hero'
 // import Footer from './components/Footer/Footer'
 
@@ -10,6 +11,7 @@ export default function App() {
 
   const [products, setProducts] = useState([])
   const [cartVisible, setCartVisible] = useState(false);
+  // const [prodDetails, setProdDetails] = useState([])
   const [cartProducts, setCartProducts] = useState([]);
 
 
@@ -51,10 +53,21 @@ export default function App() {
     setCartProducts([])
   }
 
+  // const getProductDetails = () => {
+  //   setProdDetails(products)
+  // }
+
   return (
     <div className='scroll-smooth font-mukta'>
       <Navbar handleCartClick={handleCartClick} count={cartProducts.length} />
+      {/* <ProductDetails
+       getProductDetails={getProductDetails} /> */}
       {/* <Hero /> */}
+      {!cartVisible &&
+        <Filter
+          products={products}
+          setProducts={setProducts}
+        />}
       <div className="container w-full flex flex-row justify-center items-center flex-wrap">
         {!cartVisible && products.map((product, ind) => {
           return (
@@ -71,13 +84,14 @@ export default function App() {
           )
         })}
       </div>
-      {cartVisible && <Cart
-        cartProducts={cartProducts}
-        setCartProducts={setCartProducts}
-        handleRemoveToCart={handleRemoveToCart}
-        handleAddToCart={handleAddToCart}
-        removeAllProducts={removeAllProducts}
-      />}
+      {cartVisible &&
+        <Cart
+          cartProducts={cartProducts}
+          setCartProducts={setCartProducts}
+          handleRemoveToCart={handleRemoveToCart}
+          handleAddToCart={handleAddToCart}
+          removeAllProducts={removeAllProducts}
+        />}
       {/* <Footer /> */}
 
     </div>
