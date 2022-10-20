@@ -1,4 +1,4 @@
-export default function Card({ id, title, price, image, category, addToCart, getProductDetails }) {
+export default function Card({ id, title, price, image, category, addToCart, getProductDetails, description }) {
 
     return (
         <div className="m-5">
@@ -9,7 +9,7 @@ export default function Card({ id, title, price, image, category, addToCart, get
                     </h1>
                 </div>
                 <div className="flex justify-center items-center mt-8" >
-                    <img onClick={() => getProductDetails()} className="w-48 h-48 cursor-pointer" src={image} alt="product-images" />
+                    <img onClick={() => getProductDetails({ title, price, image, category, description })} className="w-48 h-48 cursor-pointer" src={image} alt="product-images" />
                 </div>
                 <p className="text-md pl-3 pt-10 capitalize font-bold text-black">Category: {category}</p>
                 <div className="flex items-center justify-between px-4 py-2 bg-gray-900">

@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import Card from './components/Card/Card'
 import Cart from './components/Cart/Cart'
 import Filter from './components/Filter/Filter'
-// import ProductDetails from './components/ProductDetails/ProductDetails'
+import ProductDetails from './components/ProductDetails/ProductDetails'
 // import Hero from './components/Hero/Hero'
 // import Footer from './components/Footer/Footer'
 
@@ -11,22 +11,29 @@ export default function App() {
 
   const [products, setProducts] = useState([])
   const [cartVisible, setCartVisible] = useState(false);
-  // const [prodDetails, setProdDetails] = useState([])
   const [cartProducts, setCartProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([])
+  const [prodDetails, setProdDetails] = useState()
 
 
   const fetchData = async () => {
     const res = await fetch("https://fakestoreapi.com/products")
     const data = await res.json()
     setProducts(data)
+    setAllProducts(data)
   }
 
   useEffect(() => {
     fetchData();
   }, [])
 
+  const getProductDetails = (product) => {
+    setProdDetails(product)
+    // console.log(setProdDetails(product));
+  }
+
   const handleCartClick = () => {
-    console.log("Abhijeet");
+    // console.log("Abhijeet");
     setCartVisible(!cartVisible);
   };
 
@@ -53,21 +60,28 @@ export default function App() {
     setCartProducts([])
   }
 
-  // const getProductDetails = () => {
-  //   setProdDetails(products)
-  // }
-
   return (
     <div className='scroll-smooth font-mukta'>
-      <Navbar handleCartClick={handleCartClick} count={cartProducts.length} />
-      {/* <ProductDetails
-       getProductDetails={getProductDetails} /> */}
-      {/* <Hero /> */}
+      <Navbar
+        handleCartClick={handleCartClick}
+        count={cartProducts.length}
+
+      />
+
+      <ProductDetails
+        getProductDetails={getProductDetails}
+        prodDetails={prodDetails}
+        addToCart={handleAddToCart}
+      />
+
       {!cartVisible &&
         <Filter
           products={products}
           setProducts={setProducts}
+          allProducts={allProducts}
+
         />}
+
       <div className="container w-full flex flex-row justify-center items-center flex-wrap">
         {!cartVisible && products.map((product, ind) => {
           return (
@@ -80,10 +94,12 @@ export default function App() {
               category={product.category}
               id={product.id}
               addToCart={handleAddToCart}
+              getProductDetails={getProductDetails}
             />
           )
         })}
       </div>
+
       {cartVisible &&
         <Cart
           cartProducts={cartProducts}
@@ -93,6 +109,7 @@ export default function App() {
           removeAllProducts={removeAllProducts}
         />}
       {/* <Footer /> */}
+      {/* <Hero /> */}
     </div>
   )
 }
