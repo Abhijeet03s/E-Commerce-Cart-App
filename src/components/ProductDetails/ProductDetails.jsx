@@ -26,7 +26,7 @@ export default function ProductDetails({ prodDetails, addToCart }) {
                         </div>
                     </div>
                 </section>)
-                : <p>Click on the product image to check the details</p>
+                : ""
             }
         </>
     )

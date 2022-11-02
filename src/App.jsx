@@ -4,8 +4,6 @@ import Card from './components/Card/Card'
 import Cart from './components/Cart/Cart'
 import Filter from './components/Filter/Filter'
 import ProductDetails from './components/ProductDetails/ProductDetails'
-// import Hero from './components/Hero/Hero'
-// import Footer from './components/Footer/Footer'
 
 export default function App() {
 
@@ -61,7 +59,7 @@ export default function App() {
   }
 
   return (
-    <div className='scroll-smooth font-mukta'>
+    <div className='scroll-smooth font-mukta bg-color'>
       <Navbar
         handleCartClick={handleCartClick}
         count={cartProducts.length}
@@ -107,9 +105,7 @@ export default function App() {
           handleRemoveToCart={handleRemoveToCart}
           handleAddToCart={handleAddToCart}
           removeAllProducts={removeAllProducts}
-        />}
-      {/* <Footer /> */}
-      {/* <Hero /> */}
+        />}      
     </div>
   )
 }

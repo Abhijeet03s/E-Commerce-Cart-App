@@ -42,3 +42,7 @@
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+
+.bg-color {
+  background-image: linear-gradient(to bottom, #30cfd0 0%, #330867 100%);
+}
